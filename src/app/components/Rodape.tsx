@@ -18,7 +18,7 @@ export default function Rodape() {
             </div>
             <p>triaduvidas@gmail.com</p>
             <div className="ajuda">
-                <Link href={"/ajuda"}><Image src={ajuda} alt="" width={50} height={30}/></Link>
+                <Image src={ajuda} alt="" width={50} height={30}/>
                 <p>Ajuda</p>
             </div>
         </FooterRodape>

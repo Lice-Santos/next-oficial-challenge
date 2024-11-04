@@ -132,3 +132,26 @@ export type ConfirmacaoProps ={
 export type ErroProps ={
     imagem: string;
 }
+
+export type CarroProps = {
+    id: number;
+    placa: string;
+    marca: string;
+    modelo: string;
+    ano: number;
+    quilometragem: number;
+}
+
+export type UsuarioProps = {
+    id: number;
+    nome: string;
+    cpf: string;
+    sexo: string;
+    dataNascimento: string;
+}
+
+export type DiagnosticoProps = {
+    id: number;
+    problema: string;
+    orcamento: number;
+}
