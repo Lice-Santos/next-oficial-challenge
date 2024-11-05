@@ -5,7 +5,7 @@ import { CarroProps } from "@/app/types";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function Carro({ params }: { params: { id: string } }) {
+export default function Carro({ params }: { params: { id: number } }) {
     const navigate = useRouter();
     const id = params.id
 
