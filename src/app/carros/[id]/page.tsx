@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Carro({ params }: { params: { id: number } }) {
-    const router = useRouter();
+    const navigate = useRouter();
 
     const [carro, setCarro] = useState<CarroProps>({
         id: 0,
@@ -20,7 +20,7 @@ export default function Carro({ params }: { params: { id: number } }) {
     useEffect(() => {
         const fetchCarro = async () => {
             try {
-                const { id } = params; // Não use await aqui
+                const { id } = params; 
                 const response = await fetch(`http://localhost:8080/carro/${id}`);
                 const data = await response.json();
                 setCarro(data);
@@ -56,7 +56,7 @@ export default function Carro({ params }: { params: { id: number } }) {
                     ano: 0,
                     quilometragem: 0,
                 });
-                router.push('/carros');
+                navigate.push('/carros');
             } else {
                 alert("Erro ao atualizar o carro");
             }
@@ -72,7 +72,7 @@ export default function Carro({ params }: { params: { id: number } }) {
             });
             if (response.ok) {
                 alert('Carro deletado com sucesso');
-                router.push('/carros');
+                navigate.push('/carros');
             } else {
                 alert("Erro ao deletar o carro");
             }
@@ -141,12 +141,13 @@ export default function Carro({ params }: { params: { id: number } }) {
                     />
                 </div>
                 <div className="btns">
-                    <button className="bg-green-700" type="submit">
-                        Atualizar Carro
-                    </button>
-                    <button className="bg-red-700" type="button" onClick={handleDelete}>
-                        Deletar Carro
-                    </button>
+
+                <button className="bg-green-700" type="submit">
+                    Atualizar Carro
+                </button>
+                <button className="bg-red-700" type="button" onClick={handleDelete}>
+                    Deletar Carro
+                </button>
                 </div>
             </form>
         </MainFormCrud>
