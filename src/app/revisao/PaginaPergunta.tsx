@@ -11,10 +11,8 @@ export default function PaginaPergunta({ orientacao, pergunta, onSim, onNao, btn
           }
         };
     
-        // Adiciona o ouvinte do evento keydown ao documento
         document.addEventListener('keydown', handleKeyDown);
     
-        // Remove o ouvinte do evento quando o componente for desmontado
         return () => {
           document.removeEventListener('keydown', handleKeyDown);
         };

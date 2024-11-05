@@ -1,6 +1,5 @@
 "use client"
-import Menu from "../components/Menu";
-import Rodape from "../components/Rodape";
+
 import { MainDiagnostico } from "../styles";
 import WatsonChat from "./WatsonChat";
 

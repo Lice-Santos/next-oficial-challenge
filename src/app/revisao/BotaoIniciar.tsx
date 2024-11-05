@@ -76,7 +76,7 @@ export default function BotaoIniciar(){
     };
 
     const confirmarSair = (confirmou: boolean) => {
-        setMostrarConfirmacao(false); // Fecha o modal de confirmação
+        setMostrarConfirmacao(false);
         if (confirmou) {
             setMostrarPergunta(false);
             fecharResultado();

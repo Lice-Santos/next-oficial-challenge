@@ -1,7 +1,5 @@
 import { DivTituloEquipe } from "../styles";
 
-
-
 export default function TituloEquipe() {
 
     return (

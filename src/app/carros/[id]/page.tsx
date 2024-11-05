@@ -17,11 +17,10 @@ export default function Carro({ params }: { params: { id: number } }) {
         quilometragem: 0,
     });
 
-    // Desembrulha o `params.id` de forma assíncrona dentro do `useEffect`
     useEffect(() => {
         const fetchCarro = async () => {
             try {
-                const { id } = await params; // Desembrulhando `params.id`
+                const { id } = await params; 
                 const response = await fetch(`http://localhost:8080/carro/${id}`);
                 const data = await response.json();
                 setCarro(data);

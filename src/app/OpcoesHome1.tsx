@@ -1,4 +1,3 @@
-
 import Link from "next/link"
 import { OpcoesPrincipalProps } from "./types"
 import Image from "next/image"

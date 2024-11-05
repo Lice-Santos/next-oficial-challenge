@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import LaudoRevisao from "./LaudoRevisao";
 import { DialogResp } from "../styles";
 import { RespostaProps } from "../types";
 import Image from "next/image";

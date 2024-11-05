@@ -8,7 +8,6 @@ export const HeaderCabecalho = styled.header`
 `
 
 export const DivBanner = styled.div`
-    /* @import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap'); */
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;

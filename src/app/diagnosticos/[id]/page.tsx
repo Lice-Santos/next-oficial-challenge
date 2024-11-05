@@ -14,11 +14,10 @@ export default function Diagnostico({ params }: { params: { id: number } }) {
         orcamento: 0,
     });
 
-    // Desembrulha o `params.id` de forma assíncrona dentro do `useEffect`
     useEffect(() => {
         const fetchDiagnostico = async () => {
             try {
-                const { id } = await params; // Desembrulhando `params.id`
+                const { id } = await params; 
                 const response = await fetch(`http://localhost:8080/diagnostico/${id}`);
                 const data = await response.json();
                 setDiagnostico(data);

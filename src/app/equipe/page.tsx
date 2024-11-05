@@ -1,5 +1,4 @@
 "use client"
-import Cabecalho from "../Cabecalho";
 import { DivFundoAzulClaro, MainPags } from "../styles";
 import CabecalhoEquipe from "./CabecalhoEquipe";
 import CardMembro from "./CardMembro";

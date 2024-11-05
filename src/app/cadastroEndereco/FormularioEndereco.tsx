@@ -12,14 +12,14 @@ export default function FormularioEndereco() {
     
 
     const finalizar = (e: React.MouseEvent<HTMLButtonElement>) =>{
-        e.preventDefault(); // Evita o reload da página
+        e.preventDefault(); 
         redirect('/cadastroCarro')
     }
 
-    // Função para buscar o endereço a partir do CEP
+
     const fetchAddress = async (cep: string) => {
         try {
-            // Remove formatação do CEP
+            // CEP
             const formattedCep = cep.replace(/\D/g, '');
             if (formattedCep.length !== 8) {
                 setError('CEP inválido');
@@ -27,11 +27,10 @@ export default function FormularioEndereco() {
                 return;
             }
 
-            // Chamando a API do ViaCEP
+            //  API do ViaCEP
             const response = await fetch(`https://viacep.com.br/ws/${formattedCep}/json/`);
             const data = await response.json();
 
-            // Verifica se o CEP é válido
             if (data.erro) {
                 setError('CEP não encontrado');
                 setAddress(null);
@@ -48,12 +47,10 @@ export default function FormularioEndereco() {
         }
     };
 
-    // Função para lidar com a mudança no input do CEP
     const handleCepChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newCep = event.target.value;
         setCep(newCep);
 
-        // Chamando a função de busca com um pequeno atraso para evitar muitas chamadas
         if (newCep.length === 8) {
             fetchAddress(newCep);
         }

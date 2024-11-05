@@ -1,5 +1,4 @@
 import { useCallback, useState } from "react";
-import { useRouter } from "next/router"; // Altere a importação
 import { FormularioUsuarioProps } from "../types";
 import { SecFormCadastro } from "../styles";
 import { redirect } from "next/navigation";
@@ -28,7 +27,7 @@ export default function FormularioCadastroUsuario() {
 
             redirect('cadastroEndereco')
         },
-        [formState] // Adicione router às dependências
+        [formState] 
     );
 
     const handleChangeInput = useCallback(

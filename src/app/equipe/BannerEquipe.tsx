@@ -1,6 +1,4 @@
-import Link from "next/link";
-import { DivBanner, DivBannerEquipe } from "../styles";
-import { BannerProps} from "../types";
+import { DivBannerEquipe } from "../styles";
 
 export default function BannerEquipe() {
     return (
