@@ -48,7 +48,7 @@ export default function FormularioCadastroUsuario() {
 
     return (
         <SecFormCadastro>
-            <h2>Cadastro Usuário</h2>
+            <h2></h2>
             <form onSubmit={handleSubmit}>
                 <div className="linha-form">
                     <div className="campo-texto">
