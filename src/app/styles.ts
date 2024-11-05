@@ -2009,7 +2009,6 @@ export const DialogResp = styled.dialog`
         color: #00345A;
         font-size: 20px;
         margin-top: 60px;
-        margin-left: 10%;
         
     }
 
