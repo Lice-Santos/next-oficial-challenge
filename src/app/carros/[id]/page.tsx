@@ -6,8 +6,15 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Carro({ params }: { params: { id: number } }) {
+interface PageProps {
+    params: {
+        id: string;
+    };
+}
+
+export default function Carro({ params }: PageProps) {
     const navigate = useRouter();
-    const id = params.id
+    const id = params.id;
 
     const [carro, setCarro] = useState<CarroProps>({
         id: 0,
