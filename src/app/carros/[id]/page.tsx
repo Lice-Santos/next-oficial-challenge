@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 interface PageProps {
     params: {
-        id: string;
+        id: number;
     };
 }
 
