@@ -5,9 +5,13 @@ import { UsuarioProps } from "@/app/types";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function Usuario({ params }: { params: { id: number } }) {
+export default async function UsuarioPage({ params }: { params: Promise<{ id: number }> }) {
+    const { id } = await params;
+    return <Usuario id={id} />;
+}
+
+function Usuario({ id }: { id: number }) {
     const navigate = useRouter();
-    const id = params.id
 
     const [usuario, setUsuario] = useState<UsuarioProps>({
         id: 0,
@@ -17,17 +21,15 @@ export default function Usuario({ params }: { params: { id: number } }) {
         dataNascimento: "",
     });
 
-    // Desembrulha o `params.id` de forma assíncrona dentro do `useEffect`
-
     useEffect(() => {
         const chamadaApi = async () => {
             const response = await fetch(`http://localhost:8080/usuario/${id}`);
-            const data = await response.json()
-            setUsuario(data)
-            console.log(data)
-        }
-        chamadaApi()
-    }, [id])
+            const data = await response.json();
+            setUsuario(data);
+            console.log(data);
+        };
+        chamadaApi();
+    }, [id]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -39,13 +41,13 @@ export default function Usuario({ params }: { params: { id: number } }) {
 
         try {
             const cabecalho = {
-                method: 'PUT',
+                method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(usuario),
             };
             const response = await fetch(`http://localhost:8080/usuario/${usuario.id}`, cabecalho);
             if (response.ok) {
-                alert('Usuário atualizado com sucesso');
+                alert("Usuário atualizado com sucesso");
                 setUsuario({
                     id: 0,
                     cpf: "",
@@ -53,7 +55,7 @@ export default function Usuario({ params }: { params: { id: number } }) {
                     sexo: "",
                     dataNascimento: "",
                 });
-                navigate.push('/usuarios');
+                navigate.push("/usuarios");
             } else {
                 alert("Erro ao atualizar o usuário");
             }
@@ -65,11 +67,11 @@ export default function Usuario({ params }: { params: { id: number } }) {
     const handleDelete = async () => {
         try {
             const response = await fetch(`http://localhost:8080/usuario/${usuario.id}`, {
-                method: 'DELETE',
+                method: "DELETE",
             });
             if (response.ok) {
-                alert('Usuário deletado com sucesso');
-                navigate.push('/usuarios');
+                alert("Usuário deletado com sucesso");
+                navigate.push("/usuarios");
             } else {
                 alert("Erro ao deletar o usuário");
             }
@@ -80,35 +82,59 @@ export default function Usuario({ params }: { params: { id: number } }) {
 
     return (
         <MainFormCrud className="grow p-5">
-            <h1>USUÁRIO</h1>
-            <form onSubmit={handleSubmit}>
+            <h1 className="text-3xl text-center text-indigo-600 mb-4 font-bold">Usuário</h1>
+            <form className="w-1/3 m-auto p-2 border border-indigo-950 rounded-md" onSubmit={handleSubmit}>
                 <div className="flex flex-col p-2">
                     <label className="text-gray-700" htmlFor="idcpf">CPF</label>
-                    <input className="border border-gray-700 p-1 rounded-md" type="text" name="cpf" id="idcpf"
-                        onChange={handleChange} value={usuario.cpf} />
+                    <input
+                        className="border border-gray-700 p-1 rounded-md"
+                        type="text"
+                        name="cpf"
+                        id="idcpf"
+                        onChange={handleChange}
+                        value={usuario.cpf}
+                    />
                 </div>
                 <div className="flex flex-col p-2">
                     <label className="text-gray-700" htmlFor="idnome">Nome</label>
-                    <input className="border border-gray-700 p-1 rounded-md" type="text" name="nome" id="idnome"
-                        onChange={handleChange} value={usuario.nome} />
+                    <input
+                        className="border border-gray-700 p-1 rounded-md"
+                        type="text"
+                        name="nome"
+                        id="idnome"
+                        onChange={handleChange}
+                        value={usuario.nome}
+                    />
                 </div>
                 <div className="flex flex-col p-2">
                     <label className="text-gray-700" htmlFor="idsexo">Sexo - M/F</label>
-                    <input className="border border-gray-700 p-1 rounded-md" type="text" name="sexo" id="idsexo"
-                        onChange={handleChange} value={usuario.sexo} />
+                    <input
+                        className="border border-gray-700 p-1 rounded-md"
+                        type="text"
+                        name="sexo"
+                        id="idsexo"
+                        onChange={handleChange}
+                        value={usuario.sexo}
+                    />
                 </div>
                 <div className="flex flex-col p-2">
                     <label className="text-gray-700" htmlFor="iddata">Data de Nascimento - yyyy-MM-dd</label>
-                    <input className="border border-gray-700 p-1 rounded-md" type="text" name="dataNascimento" id="iddata"
-                        onChange={handleChange} value={usuario.dataNascimento} />
+                    <input
+                        className="border border-gray-700 p-1 rounded-md"
+                        type="text"
+                        name="dataNascimento"
+                        id="iddata"
+                        onChange={handleChange}
+                        value={usuario.dataNascimento}
+                    />
                 </div>
                 <div className="btns">
-                <button className="bg-green-700" type="submit">
-                    Atualizar Usuário
-                </button>
-                <button className="bg-red-700" type="button" onClick={handleDelete}>
-                    Deletar Usuário
-                </button>
+                    <button className="bg-green-700 text-white text-xl p-2 rounded-md" type="submit">
+                        Atualizar Usuário
+                    </button>
+                    <button className="bg-red-700 text-white text-xl p-2 rounded-md" type="button" onClick={handleDelete}>
+                        Deletar Usuário
+                    </button>
                 </div>
             </form>
         </MainFormCrud>

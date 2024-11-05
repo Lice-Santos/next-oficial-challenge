@@ -5,9 +5,13 @@ import { DiagnosticoProps } from "@/app/types";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function Diagnostico({ params }: { params: { id: number } }) {
+export default async function DiagnosticoPage({ params }: { params: Promise<{ id: number }> }) {
+    const { id } = await params;
+    return <Diagnostico id={id} />;
+}
+
+function Diagnostico({ id }: { id: number }) {
     const navigate = useRouter();
-    const id = params.id
 
     const [diagnostico, setDiagnostico] = useState<DiagnosticoProps>({
         id: 0,
@@ -18,12 +22,12 @@ export default function Diagnostico({ params }: { params: { id: number } }) {
     useEffect(() => {
         const chamadaApi = async () => {
             const response = await fetch(`http://localhost:8080/diagnostico/${id}`);
-            const data = await response.json()
-            setDiagnostico(data)
-            console.log(data)
-        }
-        chamadaApi()
-    }, [id])
+            const data = await response.json();
+            setDiagnostico(data);
+            console.log(data);
+        };
+        chamadaApi();
+    }, [id]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -35,19 +39,19 @@ export default function Diagnostico({ params }: { params: { id: number } }) {
 
         try {
             const cabecalho = {
-                method: 'PUT',
+                method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(diagnostico),
             };
             const response = await fetch(`http://localhost:8080/diagnostico/${diagnostico.id}`, cabecalho);
             if (response.ok) {
-                alert('Diagnóstico atualizado com sucesso');
+                alert("Diagnóstico atualizado com sucesso");
                 setDiagnostico({
                     id: 0,
                     problema: "",
                     orcamento: 0,
                 });
-                navigate.push('/diagnosticos');
+                navigate.push("/diagnosticos");
             } else {
                 alert("Erro ao atualizar o diagnóstico");
             }
@@ -59,11 +63,11 @@ export default function Diagnostico({ params }: { params: { id: number } }) {
     const handleDelete = async () => {
         try {
             const response = await fetch(`http://localhost:8080/diagnostico/${diagnostico.id}`, {
-                method: 'DELETE',
+                method: "DELETE",
             });
             if (response.ok) {
-                alert('Diagnóstico deletado com sucesso');
-                navigate.push('/diagnosticos');
+                alert("Diagnóstico deletado com sucesso");
+                navigate.push("/diagnosticos");
             } else {
                 alert("Erro ao deletar o diagnóstico");
             }
@@ -100,10 +104,10 @@ export default function Diagnostico({ params }: { params: { id: number } }) {
                     />
                 </div>
                 <div className="btns">
-                    <button className="bg-green-700">
+                    <button className="bg-green-700 text-white text-xl p-2 rounded-md" type="submit">
                         Atualizar Diagnóstico
                     </button>
-                    <button className="bg-red-700" type="button" onClick={handleDelete}>
+                    <button className="bg-red-700 text-white text-xl p-2 rounded-md" type="button" onClick={handleDelete}>
                         Deletar Diagnóstico
                     </button>
                 </div>
