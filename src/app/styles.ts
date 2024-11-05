@@ -106,6 +106,45 @@ export const DivBannerEquipe = styled.div`
         }
     }
 `
+export const DivConsultar = styled.div`
+    display: flex;
+    height: 90vh;
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h2{
+        font-size: 35px;
+        color: #00345A;
+    }
+    p{
+        font-size: 20px;
+    }
+
+    .opcoes{
+        display: flex;
+        margin-top: 10vh;
+        width: 800px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        
+        button{
+            background-color: #52aee0;
+            padding: 10px;
+            font-size: 30px;
+            border-radius: 20px;
+            color: white;
+            box-shadow: 2px 2px  gray;
+            width: 250px;
+        }
+
+        button:hover{
+            background-color: #52bee0;
+        }
+    }
+`
+
 
 export const NavMenu = styled.nav`
     width: 100%;
@@ -172,6 +211,76 @@ export const MainPags = styled.main`
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+`
+export const MainFormCrud = styled.main`
+    background-color: #f6f6f8;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 90vh;
+
+    h1{
+        font-size: 50px;
+        margin-top: 10vh;
+        color: #051e67;
+    }
+
+    .btns{
+        display: flex;
+        justify-content: end;
+        button{
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 3px;
+        }
+    }
+
+    form{
+        width: 33.3%; 
+        margin: 0 auto; 
+        padding: 2rem; 
+        border: 3px solid #051e67;
+        background-color: #051e67;
+        border-radius: 0.375rem; 
+    }
+    label{
+        color: white;
+    }
+`
+
+export const MainTabela = styled.main`
+    background-color: #f6f6f8;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90%;
+
+    h1{
+        margin-top: 10vh;
+        font-size: 50px;
+    }
+
+    table{
+        width: 66.67%; 
+        margin: 0 auto;
+    }
+
+    thead{
+        background-color: #051e67;
+        color: white;
+    }
+
+    th, td {
+    padding: 12px; 
+    text-align: left;
+    border: 1px solid #051e67; 
+
+}
 `
 
 export const MainForm = styled.main`

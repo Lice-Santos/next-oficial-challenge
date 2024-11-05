@@ -1,4 +1,5 @@
 "use client"
+import { MainFormCrud } from "@/app/styles";
 import { UsuarioProps } from "@/app/types";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -54,7 +55,7 @@ export default function CadastroUsuários() {
     }
 
     return (
-        <main className="grow p-5">
+        <MainFormCrud className="grow p-5">
             <h1 className="text-3xl text-center font-bold mb-2 text-indigo-600">Cadastro de Usuários</h1>
             <form className="w-1/3 m-auto border border-indigo-950 p-2 rounded-md" onSubmit={handleSubmit}>
                 <div className="flex flex-col p-2">
@@ -79,7 +80,7 @@ export default function CadastroUsuários() {
                 </div>
                 <button className="bg-green-700 text-white text-xl p-2 block ms-auto me-2 rounded-md" type="submit">Cadastrar Usuário</button>
             </form>
-        </main>
+        </MainFormCrud>
     )
 
 }

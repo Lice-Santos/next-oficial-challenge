@@ -16,7 +16,8 @@ export default function Menu() {
                     <li><Link href={'/diagnostico'}>Diagnóstico</Link></li>
                     <li><Link href={'/revisao'}>Revisão</Link></li>
                     <li><Link href={'/historico'}>Histórico</Link></li>
-                    <li><Link href={'/login'}>Entrar</Link></li>
+                    <li><Link href={'/login'}>Login</Link></li>
+                    <li><Link href={'/consultar'}>Consultar</Link></li>
                 </div>
             </ul>
         </NavMenu>

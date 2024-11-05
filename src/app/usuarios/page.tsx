@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { UsuarioProps } from "../types";
 import Link from "next/link";
+import { MainTabela } from "../styles";
 
 export default function Usuarios() {
     const [lista, setLista] = useState<UsuarioProps[]>([]);
@@ -18,10 +19,10 @@ export default function Usuarios() {
     }, []);
 
     return (
-        <main className="grow p-5">
-            <h1 className="text-center text-4xl font-bold text-indigo-600 mb-4">Usuários</h1>
-            <table className="w-2/3 m-auto">
-                <thead className="bg-slate-900 text-white">
+        <MainTabela className="grow p-5">
+            <h1 >Usuários</h1>
+            <table>
+                <thead >
                     <tr>
                         <th>Id</th>
                         <th>CPF</th>
@@ -40,7 +41,7 @@ export default function Usuarios() {
                             <td>{usuario.sexo}</td>
                             <td>{usuario.dataNascimento}</td>
                             <td>
-                                <Link href={`/usuarios/${usuario.id}`} className="text-blue-500 underline">
+                                <Link href={`/usuarios/${usuario.id}`} className="text-blue-700 hover:text-blue-950">
                                     Ver Detalhes
                                 </Link>
                             </td>
@@ -48,9 +49,9 @@ export default function Usuarios() {
                     ))}
                 </tbody>
             </table>
-            <Link href="/usuarios/cad-usuarios" className="text-blue-500 underline block text-center mt-4">
+            <Link href="/usuarios/cad-usuarios" className="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-5">
                 Cadastrar Novo Usuário
             </Link>
-        </main>
+        </MainTabela>
     );
 }

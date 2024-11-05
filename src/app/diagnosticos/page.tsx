@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { DiagnosticoProps } from "../types";
 import Link from "next/link";
+import { MainPags, MainTabela } from "../styles";
 
 export default function Diagnosticos() {
     const [lista, setLista] = useState<DiagnosticoProps[]>([]);
@@ -18,10 +19,10 @@ export default function Diagnosticos() {
     }, []);
 
     return (
-        <main className="grow p-5">
-            <h1 className="text-center text-4xl font-bold text-indigo-600 mb-4">Diagnósticos</h1>
-            <table className="w-2/3 m-auto">
-                <thead className="bg-slate-900 text-white">
+        <MainTabela className="grow p-5">
+            <h1>Diagnósticos</h1>
+            <table>
+                <thead className="">
                     <tr>
                         <th>Id</th>
                         <th>Problema</th>
@@ -36,7 +37,7 @@ export default function Diagnosticos() {
                             <td>{diagnostico.problema}</td>
                             <td>{diagnostico.orcamento}</td>
                             <td>
-                                <Link href={`/diagnosticos/${diagnostico.id}`} className="text-blue-500 underline">
+                                <Link href={`/diagnosticos/${diagnostico.id}`} className="text-blue-700 hover:text-blue-950">
                                     Ver Detalhes
                                 </Link>
                             </td>
@@ -44,9 +45,9 @@ export default function Diagnosticos() {
                     ))}
                 </tbody>
             </table>
-            <Link href="/diagnosticos/cad-diagnosticos" className="text-blue-500 underline block text-center mt-4">
+            <Link href="/diagnosticos/cad-diagnosticos" className="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-5">
                 Cadastrar Novo Diagnóstico
             </Link>
-        </main>
+        </MainTabela>
     );
 }
