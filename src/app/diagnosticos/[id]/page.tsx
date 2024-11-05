@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 
 export default function Diagnostico({ params }: { params: { id: number } }) {
     const navigate = useRouter();
+    const id = params.id
 
     const [diagnostico, setDiagnostico] = useState<DiagnosticoProps>({
         id: 0,
@@ -15,18 +16,14 @@ export default function Diagnostico({ params }: { params: { id: number } }) {
     });
 
     useEffect(() => {
-        const fetchDiagnostico = async () => {
-            try {
-                const { id } = await params; 
-                const response = await fetch(`http://localhost:8080/diagnostico/${id}`);
-                const data = await response.json();
-                setDiagnostico(data);
-            } catch (error) {
-                console.log("Erro ao buscar diagnóstico", error);
-            }
-        };
-        fetchDiagnostico();
-    }, [params]);
+        const chamadaApi = async () => {
+            const response = await fetch(`http://localhost:8080/diagnostico/${id}`);
+            const data = await response.json()
+            setDiagnostico(data)
+            console.log(data)
+        }
+        chamadaApi()
+    }, [id])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;

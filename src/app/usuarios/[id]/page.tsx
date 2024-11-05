@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 
 export default function Usuario({ params }: { params: { id: number } }) {
     const navigate = useRouter();
+    const id = params.id
 
     const [usuario, setUsuario] = useState<UsuarioProps>({
         id: 0,
@@ -17,19 +18,16 @@ export default function Usuario({ params }: { params: { id: number } }) {
     });
 
     // Desembrulha o `params.id` de forma assíncrona dentro do `useEffect`
+
     useEffect(() => {
-        const fetchDiagnostico = async () => {
-            try {
-                const { id } = await params; // Desembrulhando `params.id`
-                const response = await fetch(`http://localhost:8080/usuario/${id}`);
-                const data = await response.json();
-                setUsuario(data);
-            } catch (error) {
-                console.log("Erro ao buscar usuário", error);
-            }
-        };
-        fetchDiagnostico();
-    }, [params]);
+        const chamadaApi = async () => {
+            const response = await fetch(`http://localhost:8080/usuario/${id}`);
+            const data = await response.json()
+            setUsuario(data)
+            console.log(data)
+        }
+        chamadaApi()
+    }, [id])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;

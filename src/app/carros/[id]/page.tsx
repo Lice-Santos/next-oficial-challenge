@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 
 export default function Carro({ params }: { params: { id: number } }) {
     const navigate = useRouter();
+    const id = params.id
 
     const [carro, setCarro] = useState<CarroProps>({
         id: 0,
@@ -18,18 +19,14 @@ export default function Carro({ params }: { params: { id: number } }) {
     });
 
     useEffect(() => {
-        const fetchCarro = async () => {
-            try {
-                const { id } = params; 
-                const response = await fetch(`http://localhost:8080/carro/${id}`);
-                const data = await response.json();
-                setCarro(data);
-            } catch (error) {
-                console.log("Erro ao buscar carro", error);
-            }
-        };
-        fetchCarro();
-    }, [params]);
+        const chamadaApi = async () => {
+            const response = await fetch(`http://localhost:8080/carro/${id}`);
+            const data = await response.json()
+            setCarro(data)
+            console.log(data)
+        }
+        chamadaApi()
+    }, [id])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
