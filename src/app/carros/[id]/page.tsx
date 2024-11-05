@@ -5,7 +5,6 @@ import { CarroProps } from "@/app/types";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function Carro({ params }: { params: { id: number } }) {
 interface PageProps {
     params: {
         id: string;
@@ -34,7 +33,6 @@ export default function Carro({ params }: PageProps) {
         }
         chamadaApi()
     }, [id])
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setCarro((prevState) => ({ ...prevState, [name]: value }));
