@@ -4,6 +4,7 @@ interface WatsonAssistantChatOptions {
   integrationID: string;
   region: string;
   serviceInstanceID: string;
+  clientVersion?: string; // Adicionando clientVersion como uma propriedade opcional
   onLoad: (instance: { render: () => Promise<void> }) => void;
 }
 
@@ -19,6 +20,7 @@ const WatsonChat = () => {
       integrationID: "eedef28f-76b9-47fe-ba3c-8be2e858296a",
       region: "au-syd",
       serviceInstanceID: "18b8ce04-0089-42bc-b80b-7e861741fe82",
+      clientVersion: 'latest', // Definindo a versão do cliente como 'latest'
       onLoad: async (instance) => {
         await instance.render();
       },
