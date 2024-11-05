@@ -44,6 +44,7 @@ export default function FormularioEndereco() {
         } catch (error) {
             setError('Erro ao consultar o CEP');
             setAddress(null);
+            console.log(error)
         }
     };
 

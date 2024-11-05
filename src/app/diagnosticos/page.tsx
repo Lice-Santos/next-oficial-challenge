@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { DiagnosticoProps } from "../types";
 import Link from "next/link";
-import { MainPags, MainTabela } from "../styles";
+import { MainTabela } from "../styles";
 
 export default function Diagnosticos() {
     const [lista, setLista] = useState<DiagnosticoProps[]>([]);

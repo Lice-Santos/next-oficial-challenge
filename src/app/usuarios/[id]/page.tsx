@@ -1,6 +1,6 @@
 "use client";
 
-import { MainFormCrud, MainTabela } from "@/app/styles";
+import { MainFormCrud } from "@/app/styles";
 import { UsuarioProps } from "@/app/types";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
