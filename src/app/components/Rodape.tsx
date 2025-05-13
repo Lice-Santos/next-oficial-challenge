@@ -10,7 +10,7 @@ export default function Rodape() {
 
     return (
         <FooterRodape>
-            <div className="parcerias">
+            <div className="flex parcerias">
                 <Image src={fiap} alt="" width={200}></Image>
                 <Image src={porto} alt="" width={200}></Image>
                 <Image src={oxigenio} alt="" width={200}></Image>
